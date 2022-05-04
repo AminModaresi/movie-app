@@ -1,6 +1,6 @@
 <template>
     <div class="col-span-3">
-        <nuxt-link :to="'/'" class="block border-gray-300 border">
+        <nuxt-link :to="route" class="block border-gray-300 border">
             <article>
                 <div class="w-100 relative">
                     <img class="w-100" :src='images' alt="">
@@ -36,6 +36,9 @@ export default {
     computed: {
         images() {
             return `https://image.tmdb.org/t/p/w400${this.image}`
+        },
+        route(){
+            return `/movie/${this.id}`
         }
     }
 }
