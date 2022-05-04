@@ -4,10 +4,18 @@ const createStore = () => {
         state : {
             apiKey : "3881c9135b8befa017c4ec3b4fc8ed83",
             movieList : [],
+            movieListSearch : "",
+            movieNameSearch : "",
         },
         mutations : {
             SetListMovie(state, payload) {
                 state.movieList = payload;
+            },
+            SearchMovieName(state, payload) {
+                state.movieListSearch = payload;
+            },
+            movieNameSearch(state , payload) {
+                state.movieNameSearch = payload;
             }
         },
         actions : {
@@ -23,13 +31,23 @@ const createStore = () => {
             SearchMovieName({ commit , state} , payload){
                 this.$axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${state.apiKey}&query=${payload}`)
                 .then(response => {
-                    console.log(response.data.results);
+                    return response.data.results
+                }).then(data => {
+                    let datas = data.filter(item => item.backdrop_path !== null)
+                    commit('SearchMovieName', datas)
+                    commit("movieNameSearch" , payload)
                 })
             }
         },
         getters : {
             ShowListMovie(state){
                 return state.movieList
+            },
+            ShowSearchMovieList(state){
+                return state.movieListSearch
+            },
+            ShowMovieNameSearch(state){
+                return state.movieNameSearch
             }
         }
     })
