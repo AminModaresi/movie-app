@@ -3,13 +3,13 @@ const createStore = () => {
     return new Vuex.Store({
         state : {
             apiKey : "3881c9135b8befa017c4ec3b4fc8ed83",
-            movieList : [],
+            moviePopularList : [],
             movieListSearch : "",
             movieNameSearch : "",
         },
         mutations : {
-            SetListMovie(state, payload) {
-                state.movieList = payload;
+            SetPopularListMovie(state, payload) {
+                state.moviePopularList = payload;
             },
             SearchMovieName(state, payload) {
                 state.movieListSearch = payload;
@@ -23,7 +23,7 @@ const createStore = () => {
                 try{
                     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.state.apiKey}&language=en-US&page=1`)
                     const data = await response.json()
-                    commit('SetListMovie', data.results)
+                    commit('SetPopularListMovie', data.results)
                 }catch(error){
                     console.log("error")
                 }
@@ -40,8 +40,8 @@ const createStore = () => {
             }
         },
         getters : {
-            ShowListMovie(state){
-                return state.movieList
+            ShowPopularListMovie(state){
+                return state.moviePopularList
             },
             ShowSearchMovieList(state){
                 return state.movieListSearch

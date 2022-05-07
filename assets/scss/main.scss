@@ -1,0 +1,65 @@
+@import "var";
+
+.container-fluid {
+    width: 100%;
+    padding-right: 1.75rem;
+    padding-left: 1.75rem;
+}
+
+body {
+    background-color: $dark;
+}
+
+.bg-gray {
+    background-color: $gray;
+}
+
+.bg-teal {
+    background-color: $blue;
+}
+
+.text-teal{
+    color: $blue;
+}
+
+.title {
+    &::after {
+        content: "";
+        position: absolute;
+        width: 6rem;
+        background: $blue;
+        height: 0.3rem;
+        bottom: -1.2rem;
+        left: 0;
+    }
+}
+
+.slick-dots {
+    bottom: -60px !important;
+
+    li {
+        &.slick-active {
+           background-color: $blue;
+        }
+
+        background-color: $gray;
+        width: 30px !important;
+        height: 5px !important;
+        margin: 0 0.5rem !important;
+        transition: all .3s linear;
+
+        button {
+            width: 30px !important;
+            height: 5px !important;
+
+            &::before {
+                width: 30px !important;
+                height: 5px !important;
+                color: transparent !important;
+            }
+        }
+    }
+}
+.slick-arrow {
+    display: none !important;
+}
