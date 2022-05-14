@@ -4,7 +4,7 @@
             <div class="container mx-auto">
                 <nav class="flex items-center justify-between">
                     <router-link class="font-bold text-3xl" to="/">
-                        M<span class="text-teal">OV</span>ie
+                        M<span class="text-teal">OV</span>ies
                     </router-link>
                     <SearchBox />
                 </nav>

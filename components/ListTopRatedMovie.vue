@@ -1,7 +1,7 @@
 <template>
     <section class="py-10">
         <div class="container-fluid">
-            <p class="text-4xl font-bold mb-10 ml-5 text-gray-50 relative title">POPULAR MOVIES</p>
+            <p class="text-4xl font-bold mb-10 ml-5 text-gray-50 relative title">TOP RATE</p>
             <BaseSlider v-if="!!ShowPopularListMovie">
                 <div class="px-6" v-for="movieItem in ShowPopularListMovie" :key="movieItem.id">
                     <MovieItem :id="movieItem.id" :title="movieItem.original_title" :image="movieItem.poster_path"
@@ -22,7 +22,8 @@ export default {
         ShowPopularListMovie : ''
     }),
     async fetch() {
-        let response = await this.$axios.$get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`)
+        let response = await this.$axios.$get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}&language=en-US&page=1`)
+        console.log(response.results);
         this.ShowPopularListMovie = response.results
     },
     fetchOnServer: false,
